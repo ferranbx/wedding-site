@@ -1,12 +1,15 @@
 <template>
-  <div class="locale-changer">
-    <select v-model="$i18n.locale">
-      <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
-    </select>
+  <div class="dropdown">
+    <v-select v-model="$i18n.locale" :options="langs" :clearable="false"></v-select>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import vSelect from 'vue-select'
+
+Vue.component('v-select', vSelect)
+
 export default {
   name: 'locale-changer',
   data () {
@@ -14,3 +17,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import "vue-select/src/scss/vue-select.scss";
+</style>

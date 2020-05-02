@@ -37,7 +37,7 @@
 }
 
 .text-font-accent {
-  font-family: "ff-market-web", sans-serif;
+  font-family: "zooja-pro", sans-serif;
 }
 
 .text-weight-normal {
@@ -62,11 +62,11 @@
 }
 
 .text-size-larger {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .text-size-largest {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .text-color-neutral-lightest {
@@ -125,6 +125,10 @@
   color: var(--color-accent-darkest);
 }
 
+.text-uppercase {
+  text-transform: uppercase;
+}
+
 /* FORMS */
 
 .btn {
@@ -151,9 +155,14 @@ a {
   color: inherit;
 }
 
+.dropdown {
+  min-width: 5rem;
+}
+
 /* */
 html,
-body {
+body,
+#app {
   margin: 0;
   height: 100vh;
   font-family: "ff-meta-correspondence-web-p", sans-serif;
@@ -163,36 +172,58 @@ body {
 }
 
 #home {
-  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 2.5rem;
+  height: 100%;
+  max-height: 100vh;
   display: grid;
-  grid-template-columns: minmax(40%, 30rem) auto;
+  grid-template-columns: minmax(40%, 35rem) auto;
   grid-template-rows: auto;
-  grid-template-areas: "main side side";
+  gap: 2rem 4rem;
+  grid-template-areas: 
+    "header photo "
+    "content photo"
+    "content photo"
+    "action photo";
+  
 }
 
-#main {
-  grid-area: main;
+// #home > * {
+//   padding: 1rem 0;
+// }
+
+#header {
+  grid-area: header;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
-  padding: 3rem 4rem;
+  align-items: center;
 }
-
-#side {
-  grid-area: side;
+#content {
+  grid-area: content;
+}
+#action {
+  grid-area: action;
+}
+#photo {
+  grid-area: photo;
   background-color: var(--color-accent-lightest);
   background-image: url("./assets/background.jpeg");
   background-size: cover;
-  background-position: 100% 50%;
+  background-position: 85% 50%;
 }
 
 @media (max-width: 60rem) {
-  .container {
-    grid-template-columns: 1fr;
-    grid-template-areas: "main";
-  }
-  #main {
+  #home {
     padding: 2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "photo"
+      "content"
+      "action";
+  }
+  #photo {
+    min-height: 50vh;
   }
 }
